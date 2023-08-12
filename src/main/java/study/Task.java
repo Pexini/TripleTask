@@ -2,7 +2,7 @@ package study;
 
 import java.util.Objects;
 
-public class Task {
+public abstract class Task {
     protected int id;
 
     public Task(int id) {
@@ -31,4 +31,5 @@ public class Task {
         return Objects.hash(id);
     }
 
+    public abstract String search(String query);
 }

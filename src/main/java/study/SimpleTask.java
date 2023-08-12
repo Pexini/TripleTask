@@ -19,4 +19,12 @@ public class SimpleTask extends Task {
         }
         return false;
     }
+
+    @Override
+    public String search(String query) {
+        if (title.contains(query)) {
+            return title;
+        }
+        return "задача не найдена";
+    }
 }

@@ -15,13 +15,18 @@ public class EpicTask extends Task {
 
     @Override
     public boolean matches(String query) {
-        if (Integer.toString(id).contains(query)) {
+        if (subtasks.contains(query)) {
             return true;
-        } else {
-            if (subtasks.contains(query)) {
-                return true;
-            }
-            return false;
         }
+        return false;
+    }
+
+    @Override
+    public String search(String query) {
+        if (subtasks.contains(query)) {
+            return subtasks;
+        }
+        return "задача не найдена";
     }
 }
+

@@ -29,4 +29,75 @@ class TodosTest {
         Assertions.assertArrayEquals(extended, actual);
     }
 
+
+    @Test
+    public void searchAndFindSimpleTask() {
+        SimpleTask task = new SimpleTask(11, "Заниматься програмированием, читать книгу");
+        System.out.println(task.search("Заниматься"));
+
+    }
+
+    @Test
+    public void searchAndNotFindSimpleTask() {
+        SimpleTask task = new SimpleTask(11, "Заниматься програмированием, читать книгу");
+        System.out.println(task.search("Рыба"));
+    }
+
+    @Test
+    public void searchAndFindEpicTask() {
+        String subtasks = "Изучить кулинарию, Вынести мусор, Купить продукты, читать книгу";
+
+        EpicTask task = new EpicTask(11, subtasks);
+        System.out.println(task.search("Изучить"));
+
+    }
+
+    @Test
+    public void searchAndNotFindEpicTask() {
+        String subtasks = "Изучить кулинарию, Вынести мусор, Купить продукты, читать книгу";
+
+        EpicTask task = new EpicTask(11, subtasks);
+        System.out.println(task.search("11"));  //поиск по id не настроен
+    }
+
+    @Test
+    public void searchAndFindMeetingTask() {
+        MeetingTask task = new MeetingTask(
+                14,
+                "Изучить доп. литературу, читать материалы",
+                "017",
+                "21:00"
+        );
+
+
+        System.out.println(task.search("Изучить"));
+
+    }
+
+    @Test
+    public void searchAndNotFindMeetingTask() {
+        MeetingTask task = new MeetingTask(
+                14,
+                "Изучить доп. литературу, читать материалы",
+                "017",
+                "21:00"
+        );
+
+
+        System.out.println(task.search("Точка"));
+    }
+
+    @Test
+    public void searchAndFindMeetingTaskWithProject() {
+        MeetingTask task = new MeetingTask(
+                14,
+                "Изучить доп. литературу, читать материалы",
+                "017",
+                "21:00"
+        );
+
+
+        System.out.println(task.search("017"));
+
+    }
 }

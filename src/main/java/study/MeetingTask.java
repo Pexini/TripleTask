@@ -27,9 +27,18 @@ public class MeetingTask extends Task {
 
     @Override
     public boolean matches(String query) {
-        if (topic.contains(query) && project.contains(query)) {
-            return true;
+        return (topic.contains(query) || (project.contains(query)));
+
+    }
+
+    @Override
+    public String search(String query) {
+        if (topic.contains(query)) {
+            return topic + id + project + start;
         }
-        return false;
+        if (project.contains(query)) {
+            return project + id + project + start;
+        }
+        return "задача не найдена";
     }
 }
