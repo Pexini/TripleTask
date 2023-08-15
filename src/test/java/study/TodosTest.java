@@ -40,7 +40,7 @@ class TodosTest {
     @Test
     public void searchAndNotFindSimpleTask() {
         SimpleTask task = new SimpleTask(11, "Заниматься програмированием, читать книгу");
-        System.out.println(task.search("Рыба"));
+        System.out.println(task.search("Рыба"));  //В этом тесте я проверяю, что при запросе "Рыба" (слова которого нет в  title) сиситема ввыведет сообщение - "задача не найденна"
     }
 
     @Test
@@ -48,7 +48,7 @@ class TodosTest {
         String subtasks = "Изучить кулинарию, Вынести мусор, Купить продукты, читать книгу";
 
         EpicTask task = new EpicTask(11, subtasks);
-        System.out.println(task.search("Изучить"));
+        System.out.println(task.search("Изучить"));// В этом тесте я проверяю, что при запросе "Изучить" (словокоторе есть в title) система найдет и выведет title.
 
     }
 
