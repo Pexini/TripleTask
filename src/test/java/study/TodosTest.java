@@ -33,23 +33,25 @@ class TodosTest {
     @Test
     public void searchAndFindSimpleTask() {
         SimpleTask task = new SimpleTask(11, "Заниматься програмированием, читать книгу");
-        System.out.println(task.search("Заниматься"));
+        assertTrue(task.matches("Заниматься"));
+        assertTrue(task.matches("книгу"));
 
     }
 
     @Test
     public void searchAndNotFindSimpleTask() {
         SimpleTask task = new SimpleTask(11, "Заниматься програмированием, читать книгу");
-        System.out.println(task.search("Рыба"));  //В этом тесте я проверяю, что при запросе "Рыба" (слова которого нет в  title) сиситема ввыведет сообщение - "задача не найденна"
+        assertFalse(task.matches("11"));
+        assertFalse(task.matches("Рыба"));
     }
 
     @Test
     public void searchAndFindEpicTask() {
         String subtasks = "Изучить кулинарию, Вынести мусор, Купить продукты, читать книгу";
 
-        EpicTask task = new EpicTask(11, subtasks);
-        System.out.println(task.search("Изучить"));// В этом тесте я проверяю, что при запросе "Изучить" (словокоторе есть в title) система найдет и выведет title.
-
+        EpicTask task = new EpicTask(15, subtasks);
+        assertTrue(task.matches("Изучить"));
+        assertTrue(task.matches("мусор"));
     }
 
     @Test
@@ -57,7 +59,8 @@ class TodosTest {
         String subtasks = "Изучить кулинарию, Вынести мусор, Купить продукты, читать книгу";
 
         EpicTask task = new EpicTask(11, subtasks);
-        System.out.println(task.search("11"));  //поиск по id не настроен
+        assertFalse(task.matches("11"));
+        assertFalse(task.matches("цветок"));
     }
 
     @Test
@@ -68,10 +71,8 @@ class TodosTest {
                 "017",
                 "21:00"
         );
-
-
-        System.out.println(task.search("Изучить"));
-
+        assertTrue(task.matches("материалы"));
+        assertTrue(task.matches("017"));
     }
 
     @Test
@@ -82,9 +83,8 @@ class TodosTest {
                 "017",
                 "21:00"
         );
-
-
-        System.out.println(task.search("Точка"));
+        assertFalse(task.matches("11"));
+        assertFalse(task.matches("цветок"));
     }
 
     @Test
@@ -95,9 +95,8 @@ class TodosTest {
                 "017",
                 "21:00"
         );
-
-
-        System.out.println(task.search("017"));
+        assertTrue(task.matches("017"));
 
     }
+
 }
