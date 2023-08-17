@@ -34,10 +34,10 @@ public class MeetingTask extends Task {
     @Override
     public String search(String query) {
         if (topic.contains(query)) {
-            return topic + id + project + start;
+            return topic;
         }
         if (project.contains(query)) {
-            return project + id + project + start;
+            return topic;
         }
         return "задача не найдена";
     }

@@ -78,7 +78,6 @@ class TaskTest {
 
     @Test
     public void searchMeetingTaskShouldBeTrue() {
-        String subtasks = "Изучить кулинарию, Вынести мусор, Купить продукты, читать книгу";
         MeetingTask task = new MeetingTask(
                 14,
                 "Изучить доп. литературу, читать материалы",
